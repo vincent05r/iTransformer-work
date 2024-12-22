@@ -146,3 +146,17 @@ def time_features_from_frequency_str(freq_str: str) -> List[TimeFeature]:
 
 def time_features(dates, freq='h'):
     return np.vstack([feat(dates) for feat in time_features_from_frequency_str(freq)])
+
+
+
+def numeric_time_features(time_id) -> np.ndarray:
+
+
+    max_time_id = 1000 #specific for jane st dataset
+    time_norm = time_id / max_time_id  # Normalize between 0 and 1
+
+    time_sin = np.sin(2 * np.pi * time_norm)
+    time_cos = np.cos(2 * np.pi * time_norm)
+
+    # 4) Return stacked features in shape (num_features, N)
+    return np.vstack([time_sin, time_cos])

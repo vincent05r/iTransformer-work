@@ -136,7 +136,7 @@ class DataEmbedding_inverted(nn.Module):
         if x_mark is None:
             x = self.value_embedding(x)
         else:
-            # the potential to take covariates (e.g. timestamps) as tokens
+            # the potential to take covariates (e.g. timestamps) as tokens  (x_mark is (B, L, D))
             x = self.value_embedding(torch.cat([x, x_mark.permute(0, 2, 1)], 1)) 
         # x: [Batch Variate d_model]
         return self.dropout(x)

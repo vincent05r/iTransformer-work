@@ -48,7 +48,9 @@ def data_provider(args, flag):
         timeenc=timeenc,
         freq=freq,
     )
+    
     print(flag, len(data_set))
+
     data_loader = DataLoader(
         data_set,
         batch_size=batch_size,

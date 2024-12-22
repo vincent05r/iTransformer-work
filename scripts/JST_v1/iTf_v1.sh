@@ -15,10 +15,21 @@ python -u run.py \
   --features MS \
   --target $target \
   --seq_len 1 \
+  --label_len 1 \
   --pred_len 1 \
   --e_layers 2 \
   --enc_in 83 \
-  --dec_in 83 \
   --c_out 1 \
-  --des 'Exp' \
-  --itr 1
+  --d_model 128 \
+  --d_ff 256 \
+  --n_heads 4 \
+  --e_layers 3 \
+  --dropout 0.1 \
+  --embed learned \
+  --train_epochs 50 \
+  --batch_size 64 \
+  --patience 5 \
+  --learning_rate 0.0001 \
+  --lradj type1 \
+  --des 'JST_V1_t1' \
+  --itr 1 > test1.txt

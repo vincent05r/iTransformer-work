@@ -69,12 +69,16 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                 outputs = outputs[:, -self.args.pred_len:, f_dim:]
                 batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
 
-                pred = outputs.detach().cpu()
-                true = batch_y.detach().cpu()
+                # pred = outputs.detach().cpu()
+                # true = batch_y.detach().cpu()
 
-                loss = criterion(pred, true)
+                # loss = criterion(pred, true)
 
-                total_loss.append(loss)
+                #use gpu to speed up
+                loss  = criterion(outputs, batch_y)
+                total_loss.append(loss.item())
+
+
         total_loss = np.average(total_loss)
         self.model.train()
         return total_loss

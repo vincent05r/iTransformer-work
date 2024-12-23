@@ -19,16 +19,16 @@ python -u run.py \
   --pred_len 1 \
   --enc_in 83 \
   --c_out 1 \
-  --d_model 128 \
-  --d_ff 256 \
+  --d_model 512 \
+  --d_ff 512 \
   --n_heads 4 \
   --e_layers 3 \
   --dropout 0.1 \
   --embed learned \
   --train_epochs 50 \
-  --batch_size 64 \
-  --patience 5 \
-  --learning_rate 0.0001 \
-  --lradj type1 \
+  --batch_size 128 \
+  --patience 10 \
+  --learning_rate 0.001 \
+  --lradj typeh_d \
   --des 'JST_V1_t1' \
-  --itr 1 > test1.txt
+  --itr 1 > test2.txt

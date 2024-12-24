@@ -72,7 +72,16 @@ class Dataset_Custom_jst(Dataset):
             train_data = df_data[border1s[0]:border2s[0]]
             self.scaler.fit(train_data.values)
             data = self.scaler.transform(df_data.values)
+
+            #jst x set
+            data_x_jst = df_data.drop(self.target, axis=1)
+            data_x_jst = self.scaler.transform(data_x_jst.values)
+
         else:
+            #jst x set
+            data_x_jst = df_data.drop(self.target, axis=1)
+            data_x_jst = data_x_jst.values
+
             data = df_data.values
 
         df_stamp = df_raw[[self.time_str]][border1:border2]
@@ -82,9 +91,7 @@ class Dataset_Custom_jst(Dataset):
         data_stamp = data_stamp.transpose(1, 0)
 
 
-        self.data_x = data[border1:border2]
-        self.data_x.drop(columns=) #todo 
-
+        self.data_x = data_x_jst[border1:border2]# jst method
         self.data_y = data[border1:border2]
         self.data_stamp = data_stamp
 

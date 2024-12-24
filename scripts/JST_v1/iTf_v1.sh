@@ -15,11 +15,11 @@ python -u run.py \
   --features MS \
   --target $target \
   --seq_len 1 \
-  --label_len 1 \
+  --label_len 0 \
   --pred_len 1 \
   --enc_in 82 \
   --c_out 1 \
-  --d_model 512 \
+  --d_model 256 \
   --d_ff 512 \
   --n_heads 4 \
   --e_layers 3 \

@@ -44,6 +44,8 @@ class Dataset_Custom_jst(Dataset):
 
     def __read_data__(self):
         self.scaler = StandardScaler()
+        self.scaler_x_jst = StandardScaler()
+
         df_raw = pd.read_parquet(os.path.join(self.root_path,
                                           self.data_path))
 
@@ -75,7 +77,11 @@ class Dataset_Custom_jst(Dataset):
 
             #jst x set
             data_x_jst = df_data.drop(self.target, axis=1)
-            data_x_jst = self.scaler.transform(data_x_jst.values)
+
+            x_jst_train_data = data_x_jst[border1s[0]:border2s[0]]
+            self.scaler_x_jst.fit(x_jst_train_data.values)
+
+            data_x_jst = self.scaler_x_jst.transform(data_x_jst.values)
 
         else:
             #jst x set
@@ -98,8 +104,8 @@ class Dataset_Custom_jst(Dataset):
     def __getitem__(self, index):
         s_begin = index
         s_end = s_begin + self.seq_len
-        r_begin = s_end - self.label_len
-        r_end = r_begin + self.label_len + self.pred_len
+        # r_begin = s_end - self.label_len
+        # r_end = r_begin + self.label_len + self.pred_len
 
         seq_x = self.data_x[s_begin:s_end]
 
@@ -114,7 +120,8 @@ class Dataset_Custom_jst(Dataset):
         return seq_x, seq_y, seq_x_mark, seq_y_mark
 
     def __len__(self):
-        return len(self.data_x) - self.seq_len - self.pred_len + 1
+        #return len(self.data_x) - self.seq_len - self.pred_len + 1
+        return len(self.data_x) - self.seq_len + 1
 
     def inverse_transform(self, data):
         return self.scaler.inverse_transform(data)

@@ -17,7 +17,7 @@ python -u run.py \
   --seq_len 1 \
   --label_len 1 \
   --pred_len 1 \
-  --enc_in 83 \
+  --enc_in 82 \
   --c_out 1 \
   --d_model 512 \
   --d_ff 512 \

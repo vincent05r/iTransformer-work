@@ -43,7 +43,7 @@ class Dataset_Custom_jst(Dataset):
         self.__read_data__()
 
     def __read_data__(self):
-        self.scaler = StandardScaler()
+        self.scaler_y_jst = StandardScaler()
         self.scaler_x_jst = StandardScaler()
 
         df_raw = pd.read_parquet(os.path.join(self.root_path,
@@ -70,25 +70,26 @@ class Dataset_Custom_jst(Dataset):
         elif self.features == 'S':
             df_data = df_raw[[self.target]]
 
-        if self.scale:         #do something here to separate the target from input x.
-            train_data = df_data[border1s[0]:border2s[0]]
-            self.scaler.fit(train_data.values)
-            data = self.scaler.transform(df_data.values)
+        #prep x and y target
+        #jst x set
+        data_x_jst = df_data.drop(self.target, axis=1).copy()
+        data_y_jst = df_data[self.target].copy()
 
-            #jst x set
-            data_x_jst = df_data.drop(self.target, axis=1)
+
+
+        if self.scale:         #do something here to separate the target from input x.
+            train_data_y = data_y_jst[border1s[0]:border2s[0]]
+            self.scaler_y_jst.fit(train_data_y.values)
+            data_y_jst = self.scaler_y_jst.transform(data_y_jst.values)
+
 
             x_jst_train_data = data_x_jst[border1s[0]:border2s[0]]
             self.scaler_x_jst.fit(x_jst_train_data.values)
-
             data_x_jst = self.scaler_x_jst.transform(data_x_jst.values)
 
         else:
-            #jst x set
-            data_x_jst = df_data.drop(self.target, axis=1)
             data_x_jst = data_x_jst.values
-
-            data = df_data.values
+            data_y_jst = data_y_jst.values
 
         df_stamp = df_raw[[self.time_str]][border1:border2]
 
@@ -98,8 +99,11 @@ class Dataset_Custom_jst(Dataset):
 
 
         self.data_x = data_x_jst[border1:border2]# jst method
-        self.data_y = data[border1:border2]
+        self.data_y = data_y_jst[border1:border2]
         self.data_stamp = data_stamp
+
+        del df_data
+        del df_raw
 
     def __getitem__(self, index):
         s_begin = index

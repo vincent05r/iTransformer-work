@@ -1,0 +1,33 @@
+Args in experiment:
+Namespace(is_training=1, model_id='JST_v1_t1', model='iTransformer', data='jst', root_path='./data/', data_path='p10_train_prep_v2_nd_dropna_lf_row.parquet', features='MS', target='responder_6', freq='h', checkpoints='./checkpoints/', seq_len=1, label_len=0, pred_len=1, enc_in=7, dec_in=7, c_out=1, d_model=256, n_heads=4, e_layers=3, d_layers=1, d_ff=512, moving_avg=25, factor=1, distil=True, dropout=0.1, embed='fixed', activation='gelu', output_attention=False, do_predict=False, num_workers=10, itr=1, train_epochs=50, batch_size=128, patience=10, learning_rate=0.001, des='JST_V1_t1', loss='MSE', lradj='typeh_d', use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', exp_name='MTSF', channel_independence=False, inverse=False, class_strategy='projection', target_root_path='./data/electricity/', target_data_path='electricity.csv', efficient_training=False, use_norm=True, partial_start_index=0)
+Use GPU: cuda:0
+>>>>>>>start training : JST_v1_t1_iTransformer_jst_MS_ft1_sl0_ll1_pl256_dm4_nh3_el1_dl512_df1_fcfixed_ebTrue_dtJST_V1_t1_projection_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 4002277
+val 571756
+test 1143508
+	iters: 100, epoch: 1 | loss: 2.4339900
+	speed: 0.0228s/iter; left time: 35574.5765s
+	iters: 200, epoch: 1 | loss: 3.0465136
+	speed: 0.0086s/iter; left time: 13453.6327s
+	iters: 300, epoch: 1 | loss: 1.8490330
+	speed: 0.0087s/iter; left time: 13670.9386s
+	iters: 400, epoch: 1 | loss: 1.5263624
+	speed: 0.0085s/iter; left time: 13311.8932s
+	iters: 500, epoch: 1 | loss: 2.1060910
+	speed: 0.0088s/iter; left time: 13827.7994s
+	iters: 600, epoch: 1 | loss: 1.4793649
+	speed: 0.0085s/iter; left time: 13241.1751s
+	iters: 700, epoch: 1 | loss: 1.5749810
+	speed: 0.0084s/iter; left time: 13184.6331s
+	iters: 800, epoch: 1 | loss: 2.2980697
+	speed: 0.0085s/iter; left time: 13277.3978s
+	iters: 900, epoch: 1 | loss: 1.4040884
+	speed: 0.0083s/iter; left time: 12908.4637s
+	iters: 1000, epoch: 1 | loss: 1.7949547
+	speed: 0.0083s/iter; left time: 13032.4042s
+	iters: 1100, epoch: 1 | loss: 2.2662652
+	speed: 0.0082s/iter; left time: 12786.6526s
+	iters: 1200, epoch: 1 | loss: 1.4520526
+	speed: 0.0081s/iter; left time: 12719.2483s
+	iters: 1300, epoch: 1 | loss: 2.1018469
+	speed: 0.0083s/iter; left time: 13003.2438s

@@ -13,7 +13,7 @@ warnings.filterwarnings('ignore')
 
 class Dataset_Custom_jst(Dataset):
     def __init__(self, root_path, flag='train', size=None,
-                 features='S', data_path='ETTh1.csv',
+                 features='MS', data_path='ETTh1.csv',
                  target='responder_6', scale=True, timeenc=0, freq='h', time_str='time_id'):
         # size [seq_len, label_len, pred_len]
         # info

@@ -23,11 +23,11 @@ python -u run.py \
   --n_heads 4 \
   --e_layers 3 \
   --dropout 0.1 \
-  --embed learned \
+  --embed fixed \
   --train_epochs 50 \
   --batch_size 128 \
   --patience 10 \
   --learning_rate 0.001 \
   --lradj typeh_d \
   --des 'JST_V1_t1' \
-  --itr 1 > test2.txt
+  --itr 1 > test3.txt

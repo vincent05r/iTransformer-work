@@ -8,7 +8,7 @@ target=responder_6
 python -u run.py \
   --is_training 1 \
   --root_path ./data/ \
-  --data_path p10_train_prep_v1_nd_dropna_row.parquet \
+  --data_path p10_train_prep_v2_nd_dropna_lf_row.parquet \
   --model_id JST_v1_t1 \
   --model $model_name \
   --data jst \
@@ -17,7 +17,6 @@ python -u run.py \
   --seq_len 1 \
   --label_len 0 \
   --pred_len 1 \
-  --enc_in 82 \
   --c_out 1 \
   --d_model 256 \
   --d_ff 512 \

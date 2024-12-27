@@ -73,7 +73,7 @@ class Dataset_Custom_jst(Dataset):
         #prep x and y target
         #jst x set
         data_x_jst = df_data.drop(self.target, axis=1).copy()
-        data_y_jst = df_data[self.target].copy()
+        data_y_jst = df_data[[self.target]].copy()  #ensure it is a df instead of a series
 
 
 

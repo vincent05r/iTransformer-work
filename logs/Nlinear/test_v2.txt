@@ -1,0 +1,15 @@
+Args in experiment:
+Namespace(is_training=1, model_id='JST_v1_t1', model='nlinear', data='jst', root_path='./data/', data_path='p10_train_prep_v2_nd_dropna_lf_row.parquet', features='MS', target='responder_6', freq='h', checkpoints='./checkpoints/', seq_len=1, label_len=0, pred_len=1, enc_in=66, dec_in=7, c_out=1, d_model=512, n_heads=8, e_layers=2, d_layers=1, d_ff=2048, moving_avg=25, factor=1, distil=True, dropout=0.1, embed='timeF', activation='gelu', output_attention=False, do_predict=False, num_workers=10, itr=1, train_epochs=50, batch_size=128, patience=10, learning_rate=0.001, des='JST_V1_t1', loss='MSE', lradj='typeh_d', use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', exp_name='MTSF', channel_independence=False, inverse=False, class_strategy='projection', target_root_path='./data/electricity/', target_data_path='electricity.csv', efficient_training=False, use_norm=True, partial_start_index=0, kernel_size=5, individual=True)
+Use GPU: cuda:0
+>>>>>>>start training : JST_v1_t1_nlinear_jst_MS_ft1_sl0_ll1_pl512_dm8_nh2_el1_dl2048_df1_fctimeF_ebTrue_dtJST_V1_t1_projection_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 4002277
+val 571756
+test 1143508
+	iters: 100, epoch: 1 | loss: 1.2063887
+	speed: 0.0594s/iter; left time: 92902.6142s
+	iters: 200, epoch: 1 | loss: 1.7946576
+	speed: 0.0511s/iter; left time: 79844.8593s
+	iters: 300, epoch: 1 | loss: 1.2878445
+	speed: 0.0476s/iter; left time: 74378.0741s
+	iters: 400, epoch: 1 | loss: 1.1790066
+	speed: 0.0508s/iter; left time: 79399.2436s

@@ -19,9 +19,9 @@ python -u run.py \
   --pred_len 1 \
   --c_out 1 \
   --d_model 1 \
-  --d_ff 128 \
+  --d_ff 16 \
   --n_heads 1 \
-  --e_layers 3 \
+  --e_layers 4 \
   --dropout 0.1 \
   --embed fixed \
   --train_epochs 50 \
@@ -30,4 +30,4 @@ python -u run.py \
   --learning_rate 0.001 \
   --lradj typeh_d \
   --des 'JST_V1_t1' \
-  --itr 1 > test3.txt
+  --itr 1 > test_s3.txt

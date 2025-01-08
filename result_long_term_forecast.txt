@@ -22,3 +22,6 @@ mse:1.7372678518295288, mae:0.8538941740989685
 JST_v1_t1_nlinear_jst_MS_ft1_sl0_ll1_pl512_dm8_nh2_el1_dl2048_df1_fctimeF_ebTrue_dtJST_V1_t1_projection_0  
 mse:0.8476220965385437, mae:0.6224852800369263
 
+JST_v1_t1_nlinear_jst_MS_ft1_sl0_ll1_pl512_dm8_nh2_el1_dl2048_df1_fctimeF_ebTrue_dtJST_V1_t1_projection_0  
+mse:0.8478880524635315, mae:0.622390627861023
+

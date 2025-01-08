@@ -89,7 +89,7 @@ if __name__ == '__main__':
 
     #Dlinear
     parser.add_argument('--kernel_size', type=int, default=5, help="kernel size of series decomposition of D linear")
-    parser.add_argument('--individual', type=bool, default=False, help="If use individual decomposition for each input feature")
+    parser.add_argument('--individual', action='store_true', help="If use individual decomposition for each input feature")
 
     args = parser.parse_args()
     args.use_gpu = True if torch.cuda.is_available() and args.use_gpu else False

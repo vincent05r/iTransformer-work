@@ -36,6 +36,8 @@ class Dataset_Custom_jst(Dataset):
         self.timeenc = timeenc
         self.freq = freq
 
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
         self.time_str = time_str #important, time str for each dataset
 
         self.root_path = root_path
@@ -70,12 +72,16 @@ class Dataset_Custom_jst(Dataset):
         elif self.features == 'S':
             df_data = df_raw[[self.target]]
 
+        df_stamp = df_raw[[self.time_str]][border1:border2]
+
+        del df_raw#clean up
+
         #prep x and y target
         #jst x set
         data_x_jst = df_data.drop(self.target, axis=1).copy()
         data_y_jst = df_data[[self.target]].copy()  #ensure it is a df instead of a series
 
-
+        del df_data 
 
         if self.scale:         #do something here to separate the target from input x.
             train_data_y = data_y_jst[border1s[0]:border2s[0]]
@@ -91,19 +97,27 @@ class Dataset_Custom_jst(Dataset):
             data_x_jst = data_x_jst.values
             data_y_jst = data_y_jst.values
 
-        df_stamp = df_raw[[self.time_str]][border1:border2]
 
         #time encoding
         data_stamp =  numeric_time_features(df_stamp[self.time_str])
         data_stamp = data_stamp.transpose(1, 0)
 
+        # on ram
+        # self.data_x = data_x_jst[border1:border2]# jst method
+        # self.data_y = data_y_jst[border1:border2]
+        # self.data_stamp = data_stamp
 
-        self.data_x = data_x_jst[border1:border2]# jst method
-        self.data_y = data_y_jst[border1:border2]
-        self.data_stamp = data_stamp
+        #on gpu
+        # Store data as tensors and move to the specified device
+        self.data_x = torch.tensor(data_x_jst[border1:border2], dtype=torch.float32).to(self.device)
+        self.data_y = torch.tensor(data_y_jst[border1:border2], dtype=torch.float32).to(self.device)
+        self.data_stamp = torch.tensor(data_stamp, dtype=torch.float32).to(self.device)
 
-        del df_data
-        del df_raw
+        #clean up
+        del data_x_jst
+        del data_y_jst
+        del data_stamp
+
 
     def __getitem__(self, index):
         s_begin = index

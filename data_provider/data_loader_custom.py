@@ -103,6 +103,9 @@ class Dataset_Custom_jst(Dataset):
         data_stamp =  numeric_time_features(df_stamp[self.time_str])
         data_stamp = data_stamp.transpose(1, 0)
 
+        #save scaler y_jst
+        
+
         # on ram
         # self.data_x = data_x_jst[border1:border2]# jst method
         # self.data_y = data_y_jst[border1:border2]

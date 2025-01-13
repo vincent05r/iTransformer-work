@@ -7,6 +7,7 @@ from torch.utils.data import Dataset, DataLoader
 from sklearn.preprocessing import StandardScaler
 from utils.timefeatures import time_features, numeric_time_features
 import warnings
+import pickle
 
 warnings.filterwarnings('ignore')
 
@@ -121,6 +122,18 @@ class Dataset_Custom_jst(Dataset):
         del data_x_jst
         del data_y_jst
         del data_stamp
+
+
+        #save scaler
+        folder_path = './scaler/' + self.data_path.replace('.csv', '') + '/'
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+
+        with open( folder_path + self.data_path.replace('.csv', '') + '_' + str(self.seq_len) + '_' + str(self.pred_len) + 'x_scl' '.pkl', 'wb') as f:
+            pickle.dump(self.scaler_x_jst, f)
+
+        with open( folder_path + self.data_path.replace('.csv', '') + '_' + str(self.seq_len) + '_' + str(self.pred_len) + 'y_scl' '.pkl', 'wb') as f:
+            pickle.dump(self.scaler_y_jst, f)
 
 
     def __getitem__(self, index):

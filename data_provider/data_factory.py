@@ -1,7 +1,7 @@
 from data_provider.data_loader import Dataset_ETT_hour, Dataset_ETT_minute, Dataset_Custom, Dataset_Solar, Dataset_PEMS, \
     Dataset_Pred
 
-from data_provider.data_loader_custom import Dataset_Custom_jst
+from data_provider.data_loader_custom import Dataset_Custom_jst, Dataset_Custom_jst_pred
 
 from torch.utils.data import DataLoader
 
@@ -13,7 +13,8 @@ data_dict = {
     'Solar': Dataset_Solar,
     'PEMS': Dataset_PEMS,
     'custom': Dataset_Custom,
-    'jst': Dataset_Custom_jst
+    'jst': Dataset_Custom_jst,
+    'jst_pred': Dataset_Custom_jst_pred
 }
 
 
@@ -32,6 +33,12 @@ def data_provider(args, flag):
         batch_size = 1
         freq = args.freq
         Data = Dataset_Pred
+    elif flag == 'jst_pred':
+        shuffle_flag = False
+        drop_last = False
+        batch_size = 1
+        freq = args.freq
+        Data = Dataset_Custom_jst_pred
     else:
         shuffle_flag = True
         drop_last = True
